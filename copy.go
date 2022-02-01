@@ -1,10 +1,10 @@
-package main
+package handler
 
 import (
 	"github.com/labstack/echo/v4"
+	"net/http"
 )
 
-func main() {
-	e := echo.New()
-	e.Logger.Fatal(e.Start(":1323"))
+func Welcome(c echo.Context) error {
+	return c.String(http.StatusOK, "Chào mừng bạn đã đến Auto Săn Sale được viết bởi Nim")
 }
