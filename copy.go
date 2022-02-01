@@ -1,14 +1,17 @@
-package router
+package main
 
 import (
 	"github.com/labstack/echo/v4"
-	"hunting-voucher/handler"
+	"hunting-voucher/router"
 )
 
-type API struct {
-	Echo *echo.Echo
-}
+func main() {
+	e := echo.New()
 
-func (api *API) SetupRouter() {
-	api.Echo.GET("/", handler.Welcome)
+	api := router.API{
+		Echo:           e,
+	}
+	api.SetupRouter()
+
+	e.Logger.Fatal(e.Start(":1323"))
 }
