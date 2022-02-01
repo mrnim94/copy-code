@@ -1,10 +1,14 @@
-package handler
+package router
 
 import (
 	"github.com/labstack/echo/v4"
-	"net/http"
+	"hunting-voucher/handler"
 )
 
-func Welcome(c echo.Context) error {
-	return c.String(http.StatusOK, "Chào mừng bạn đã đến Auto Săn Sale được viết bởi Nim")
+type API struct {
+	Echo *echo.Echo
+}
+
+func (api *API) SetupRouter() {
+	api.Echo.GET("/", handler.Welcome)
 }
